@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using System.Text;
 using System.Transactions;
 
 namespace M404Calculator
@@ -18,27 +19,28 @@ namespace M404Calculator
                 switch (input)
                 {
                     case "1":
-                        Console.WriteLine("You've chosen 1 for addition");
+                        Console.WriteLine("You've chosen [1] for addition");
                         calculator.Addition();
                         Console.WriteLine(calculator.GetResult());
                         break;
                     case "2":
-                        Console.WriteLine("You've chosen 2 for subtraction");
+                        Console.WriteLine("You've chosen [2] for subtraction");
                         calculator.Subtraction();
                         Console.WriteLine(calculator.GetResult());
                         break;
                     case "3":
-                        Console.WriteLine("You've chosen 3 for multiplication");
+                        Console.WriteLine("You've chosen [3] for multiplication");
                         calculator.Multiplication();
                         Console.WriteLine(calculator.GetResult());
                         break;
                     case "4":
-                        Console.WriteLine("You've chosen 4 for division");
+                        Console.WriteLine("You've chosen [4] for division");
                         calculator.Division();
                         Console.WriteLine(calculator.GetResult());
                         break;
                 }
-                if (input != "99" || input != "") // this enables the user to see the result instead of just going to the menu back again
+                // tmp is actually useless and trash but is there to store the parsed int
+                if (input != "99" && int.TryParse(input, out int tmp)) // this enables the user to see the result instead of just going to the menu back again
                 {
                     Console.WriteLine("Please enter any key to continue.");
                     Console.ReadKey();
